@@ -4,5 +4,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .ruff_cache/
-evidence/
-readiness-report.json
+.agents/
+.env
+*.tar.gz
+ORIGINAL_REQUEST.md
+activity_logs/
+project_memory.md

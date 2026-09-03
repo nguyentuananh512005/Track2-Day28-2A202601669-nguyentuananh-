@@ -32,6 +32,10 @@ def test_event_headers_preserve_trace_and_idempotency() -> None:
     assert dict(event_headers(None, "feedback:42")) == {
         "idempotency-key": b"feedback:42"
     }
+    assert event_headers("", "feedback:42") == [("idempotency-key", b"feedback:42")]
+    assert dict(event_headers("", "feedback:42")) == {
+        "idempotency-key": b"feedback:42"
+    }
 
 
 def test_delta_source_is_replay_safe_and_newest_wins() -> None:

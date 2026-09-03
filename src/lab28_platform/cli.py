@@ -226,6 +226,10 @@ def seed(
             selected = rows[:limit] if limit else rows
             accepted[kind], rejected[kind] = [], []
             for row in selected:
+                if via_gateway:
+                    import time
+
+                    time.sleep(0.12)
                 response = client.post(f"/api/v1/{kind}", json=row)
                 target = accepted if response.status_code == 202 else rejected
                 target[kind].append(
